@@ -12,7 +12,7 @@ ext {
 }
 
 group = 'com.example.zoe'
-version = '0.0.2-SNAPSHOT'
+version = '0.0.4'
 sourceCompatibility = '1.8'
 
 apply plugin: 'io.spring.dependency-management'

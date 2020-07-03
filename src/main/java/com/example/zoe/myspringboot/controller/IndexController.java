@@ -13,6 +13,13 @@ public class IndexController {
     @GetMapping("/")
     public String Index() {
         log.info("HELLO ZOE!");
+        log.info("HELLO ZOE!");
         return "HELLO ZOE";
+    }
+
+    @GetMapping("/index")
+    public String Index1() {
+        log.info("HELLO index!");
+        return "HELLO index";
     }
 }
