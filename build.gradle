@@ -1,0 +1,58 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'com.google.cloud.tools.jib' version '1.1.2'
+}
+ext {
+    set('registryUrl',"registry.cn-hangzhou.aliyuncs.com")
+    set('registryNamespace', "zoe_common")
+    set('registryUsername',"柳叶儿612")
+    set('registryPassword',"T@Xb37\$l85i4OrXbxa1?(9XNKvmGNXt6")
+}
+
+group = 'com.example.zoe'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "com.google.cloud.tools.jib"
+
+repositories {
+    maven { url "http://mirror.frp.trmap.cn/repository/maven-public/" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    // JDBC
+    runtimeOnly 'org.postgresql:postgresql'
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jib {
+    from {
+        image = "java:8"
+    }
+    to {
+        image = "${registryUrl}/${registryNamespace}/${project.getName()}"
+        tags = ["latest","${project.version}".toString() ]
+        auth {
+            username = "${registryUsername}"
+            password = "${registryPassword}"
+        }
+    }
+    container {
+        /**
+         * 设置jvm的启动参数
+         * user.timezone - 解决Java程序的时区问题
+         */
+        jvmFlags = ['-Duser.timezone=Asia/Shanghai']
+    }
+}
