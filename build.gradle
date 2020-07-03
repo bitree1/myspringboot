@@ -8,11 +8,11 @@ ext {
     set('registryUrl',"registry.cn-hangzhou.aliyuncs.com")
     set('registryNamespace', "zoe_common")
     set('registryUsername',"柳叶儿612")
-    set('registryPassword',"T@Xb37\$l85i4OrXbxa1?(9XNKvmGNXt6")
+    set('registryPassword',"liuyan@registry")
 }
 
 group = 'com.example.zoe'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 apply plugin: 'io.spring.dependency-management'
@@ -24,10 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter'
-    // JDBC
-    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
