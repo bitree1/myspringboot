@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateUtils {
+public class DateUtilss {
     public static final String DATEFORMT_STRING = "yyyy-MM-dd";
 
     public static String DateFormtString(Date date){
